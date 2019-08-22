@@ -8,7 +8,7 @@ var client = mqtt.connect('wss://www.vishalpandey.xyz:8080');
 client.on('connect', function () {
 	client.subscribe('iotswitch', function (err) {
 		if (!err) {
-			// client.publish('iotswitch', 'My Cannel Testing 1')
+			client.publish('iotswitch', 'My Cannel Testing 1');
 		}
 	});
 });
@@ -43,13 +43,9 @@ window.onload = function () {
 	if (window.location.pathname == '/control.html') {
 		document.querySelector('.button-on').addEventListener('click', function () {
 			client.publish('iotswitch', '1');
-			// document.querySelector('.button-on').setAttribute('disabled', true);
-			// document.querySelector('.button-off').removeAttribute('disabled');
 		});
 		document.querySelector('.button-off').addEventListener('click', function () {
 			client.publish('iotswitch', '0');
-			// document.querySelector('.button-on').removeAttribute('disabled');
-			// document.querySelector('.button-off').setAttribute('disabled', true);
 		});
 	}
 };
